@@ -12,7 +12,7 @@ from hvloop import new_event_loop
 class EchoServerProtocol(asyncio.Protocol):
     def connection_made(self, transport: transports.BaseTransport) -> None:
         peername = transport.get_extra_info('peername')
-        print("connection from {}".format(peername))
+        print(f"connection from {peername}")
         self.transport = transport
 
     def data_received(self, data: bytes) -> None:

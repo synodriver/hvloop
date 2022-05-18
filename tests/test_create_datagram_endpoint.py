@@ -14,7 +14,7 @@ class EchoServerProtocol(asyncio.DatagramProtocol):
         self.transport = transport
 
     def datagram_received(self, data: bytes, addr) -> None:
-        print("server received: %s, from: %s" % (data, addr))
+        print(f"server received: {data}, from: {addr}")
         self.transport.sendto(data, addr)
         self.transport.close()
 
@@ -25,7 +25,7 @@ class EchoClientProtocol(asyncio.DatagramProtocol):
         self.waiter = None
 
     def datagram_received(self, data: bytes, addr) -> None:
-        print("recv: %s from <%s>" % (data, addr))
+        print(f"recv: {data} from <{addr}>")
         if self.waiter:
             self.waiter.set_result(data)
 

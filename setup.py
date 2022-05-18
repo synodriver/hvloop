@@ -26,8 +26,12 @@ class hvloop_build_ext(build_ext):
         cmake_args = [LIBHV_DIR, "-DCMAKE_POSITION_INDEPENDENT_CODE=ON"]
 
         if is_win:
-            cmake_args.append("-DCMAKE_GENERATOR_PLATFORM=x64")
-            cmake_args.append("-DCMAKE_GENERATOR_TOOLSET=host=x64")
+            cmake_args.extend(
+                (
+                    "-DCMAKE_GENERATOR_PLATFORM=x64",
+                    "-DCMAKE_GENERATOR_TOOLSET=host=x64",
+                )
+            )
 
         print(cmake_args)
 
